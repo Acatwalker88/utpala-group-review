@@ -1,0 +1,13 @@
+<svg width="310" height="76" viewBox="0 0 310 76" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Utpala Group placeholder logo</title>
+  <desc id="desc">A navy and gold geometric lotus mark with Utpala Group wordmark.</desc>
+  <rect width="310" height="76" fill="transparent"/>
+  <g transform="translate(5 8)">
+    <path d="M31 3L58 30L31 57L4 30L31 3Z" stroke="#C8A24A" stroke-width="3"/>
+    <path d="M31 14C41 20 45 30 31 46C17 30 21 20 31 14Z" stroke="#C8A24A" stroke-width="3" fill="none"/>
+    <path d="M17 24C25 25 31 31 31 46C20 40 14 34 17 24Z" stroke="#C8A24A" stroke-width="3" fill="none"/>
+    <path d="M45 24C37 25 31 31 31 46C42 40 48 34 45 24Z" stroke="#C8A24A" stroke-width="3" fill="none"/>
+  </g>
+  <text x="82" y="34" fill="#071A2D" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" letter-spacing="1.4">UTPALA</text>
+  <text x="84" y="56" fill="#A9822A" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="4.2">GROUP</text>
+</svg>
