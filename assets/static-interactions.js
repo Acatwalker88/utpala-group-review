@@ -12,7 +12,10 @@
     header?.classList.toggle("is-menu-open", open);
     document.body.classList.toggle("menu-open", open);
     menuButton?.setAttribute("aria-expanded", String(open));
-    menuButton?.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    menuButton?.setAttribute(
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu",
+    );
     menu?.setAttribute("aria-hidden", String(!open));
     if (open) menu?.removeAttribute("inert");
     else menu?.setAttribute("inert", "");
@@ -28,31 +31,43 @@
     setMenu(menuButton.getAttribute("aria-expanded") !== "true");
     setShare(false);
   });
-  menu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
+  menu
+    ?.querySelectorAll("a")
+    .forEach((link) => link.addEventListener("click", () => setMenu(false)));
   shareButton?.addEventListener("click", () => {
     setShare(shareButton.getAttribute("aria-expanded") !== "true");
     setMenu(false);
   });
-  shareDrawer?.querySelector(".close-share")?.addEventListener("click", () => setShare(false));
+  shareDrawer
+    ?.querySelector(".close-share")
+    ?.addEventListener("click", () => setShare(false));
 
   const shareLinks = shareDrawer?.querySelectorAll("a");
   const pageUrl = encodeURIComponent(window.location.href);
-  if (shareLinks?.[0]) shareLinks[0].href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
-  if (shareLinks?.[1]) shareLinks[1].href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-  if (shareLinks?.[2]) shareLinks[2].href = `mailto:?subject=${encodeURIComponent("Utpala Group")}&body=${pageUrl}`;
+  if (shareLinks?.[0])
+    shareLinks[0].href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+  if (shareLinks?.[1])
+    shareLinks[1].href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  if (shareLinks?.[2])
+    shareLinks[2].href = `mailto:?subject=${encodeURIComponent("Utpala Group")}&body=${pageUrl}`;
 
-  const copyButton = shareDrawer?.querySelector('button[aria-label="Copy page link"]');
+  const copyButton = shareDrawer?.querySelector(
+    'button[aria-label="Copy page link"]',
+  );
   copyButton?.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
       copyButton.textContent = "✓";
-      window.setTimeout(() => { copyButton.textContent = "⧉"; }, 1800);
+      window.setTimeout(() => {
+        copyButton.textContent = "⧉";
+      }, 1800);
     } catch {
       window.prompt("Copy this page link:", window.location.href);
     }
   });
 
-  const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 40);
+  const updateHeader = () =>
+    header?.classList.toggle("is-scrolled", window.scrollY > 40);
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
   window.addEventListener("keydown", (event) => {
@@ -68,11 +83,26 @@
   const newsLabel = document.querySelector(".hero-news-strip span");
   const newsLink = document.querySelector(".hero-news-strip a");
   const news = [
-    ["Clear direction", "Begin with the advice your property, business, or development decision requires.", "#consulting"],
-    ["Financial fit", "Discuss financing needs in the context of the opportunity you are considering.", "#mortgages"],
-    ["Property insight", "Connect the right property decision with your wider project and financial priorities.", "#realty"],
-    ["Built around you", "Move from an approved direction into coordinated residential or commercial construction.", "#constructions"],
-    ["Consulting add-ons", "Ask first about a Feasibility Report, Interior Design, Web Design, or Property Management.", "#consultation"],
+    [
+      "Finance",
+      "Financing strategy and mortgage coordination aligned with your objectives.",
+      "#finance",
+    ],
+    [
+      "Real Estate",
+      "Purchase, sale, investment, and property advisory across Niagara and the GTA.",
+      "#real-estate",
+    ],
+    [
+      "Design",
+      "Architectural, engineering, and interior-design coordination for practical project delivery.",
+      "#design",
+    ],
+    [
+      "Construction",
+      "Residential, commercial, and institutional construction by a licensed and registered builder.",
+      "#construction",
+    ],
   ];
   let activeSlide = 0;
   let carouselPaused = false;
@@ -102,18 +132,29 @@
     }
   }
 
-  dots.forEach((dot, index) => dot.addEventListener("click", () => showSlide(index)));
+  dots.forEach((dot, index) =>
+    dot.addEventListener("click", () => showSlide(index)),
+  );
   hero?.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") showSlide(activeSlide - 1);
     if (event.key === "ArrowRight") showSlide(activeSlide + 1);
   });
-  hero?.addEventListener("mouseenter", () => { carouselPaused = true; });
-  hero?.addEventListener("mouseleave", () => { carouselPaused = false; });
-  hero?.addEventListener("focusin", () => { carouselPaused = true; });
+  hero?.addEventListener("mouseenter", () => {
+    carouselPaused = true;
+  });
+  hero?.addEventListener("mouseleave", () => {
+    carouselPaused = false;
+  });
+  hero?.addEventListener("focusin", () => {
+    carouselPaused = true;
+  });
   hero?.addEventListener("focusout", (event) => {
     if (!hero.contains(event.relatedTarget)) carouselPaused = false;
   });
-  if (slides.length > 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if (
+    slides.length > 1 &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
     const timer = window.setInterval(() => {
       if (!carouselPaused) showSlide(activeSlide + 1);
     }, 7000);
@@ -121,10 +162,41 @@
   }
 
   const addOns = {
-    feasibility: ["Feasibility Report", "Review the planning, approval, site, and project considerations that affect a confident go-forward decision.", ["Property and project context", "Zoning and approval considerations", "Key constraints and dependencies", "Recommended next steps"]],
-    "interior-design": ["Interior Design", "Connect space planning and design direction with the practical needs of your property or business.", ["Concept direction", "Space planning", "Material direction", "Residential or commercial fit"]],
-    "web-design": ["Web Design", "Create a focused digital presence for a property, development, or business launch.", ["Landing page or website", "Service content structure", "Lead-generation pathway", "Responsive implementation"]],
-    "property-management": ["Property Management", "Coordinate ongoing property needs after acquisition, leasing, or project completion.", ["Owner support", "Rental readiness", "Maintenance pathway", "Ongoing property care"]],
+    advisory: [
+      "Advisory",
+      "Understanding the property, opportunity, risks, and available options.",
+      [
+        "Property and project context",
+        "Opportunity review",
+        "Risk considerations",
+        "Available options",
+      ],
+    ],
+    strategy: [
+      "Strategy",
+      "Establishing feasibility, direction, priorities, and a practical pathway.",
+      [
+        "Feasibility",
+        "Strategic direction",
+        "Project priorities",
+        "Practical pathway",
+      ],
+    ],
+    development: [
+      "Development",
+      "Coordinating project planning, approvals, consultants, design, and implementation requirements.",
+      [
+        "Project planning",
+        "Approvals",
+        "Consultant coordination",
+        "Design and implementation requirements",
+      ],
+    ],
+    "project-management": [
+      "Project Management",
+      "Coordinating scope, schedule, budget, procurement, and project delivery.",
+      ["Scope", "Schedule and budget", "Procurement", "Project delivery"],
+    ],
   };
   const tabs = [...document.querySelectorAll(".addon-tab")];
   const panel = document.querySelector(".addon-detail");
@@ -137,7 +209,6 @@
       tab.classList.toggle("is-active", active);
       tab.setAttribute("aria-selected", String(active));
     });
-    panel.id = `panel-${id}`;
     panel.setAttribute("aria-labelledby", `tab-${id}`);
     const title = panel.querySelector("h3");
     const description = panel.querySelector("h3 + p");
@@ -145,11 +216,13 @@
     if (title) title.textContent = data[0];
     if (description) description.textContent = data[1];
     if (list) {
-      list.replaceChildren(...data[2].map((detail) => {
-        const item = document.createElement("li");
-        item.textContent = detail;
-        return item;
-      }));
+      list.replaceChildren(
+        ...data[2].map((detail) => {
+          const item = document.createElement("li");
+          item.textContent = detail;
+          return item;
+        }),
+      );
     }
   }
 
@@ -159,8 +232,10 @@
     tab.addEventListener("keydown", (event) => {
       const current = tabs.indexOf(tab);
       let next;
-      if (event.key === "ArrowRight" || event.key === "ArrowDown") next = tabs[(current + 1) % tabs.length];
-      if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = tabs[(current - 1 + tabs.length) % tabs.length];
+      if (event.key === "ArrowRight" || event.key === "ArrowDown")
+        next = tabs[(current + 1) % tabs.length];
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp")
+        next = tabs[(current - 1 + tabs.length) % tabs.length];
       if (next) {
         event.preventDefault();
         next.focus();
@@ -170,6 +245,86 @@
   });
 
   const form = document.querySelector(".lead-form");
+  const serviceSelect = form?.querySelector("#serviceInterest");
+  const consultingField = form?.querySelector(".consulting-detail-field");
+  const consultingSelect = form?.querySelector("#consultingInterest");
+  const contactSection = document.querySelector("#consultation");
+
+  function syncConsultingField() {
+    const show = serviceSelect?.value === "Real Estate Consulting";
+    if (consultingField) consultingField.hidden = !show;
+    if (consultingSelect) {
+      consultingSelect.disabled = !show;
+      consultingSelect.required = show;
+      if (!show) consultingSelect.value = "";
+    }
+  }
+
+  serviceSelect?.addEventListener("change", syncConsultingField);
+  syncConsultingField();
+
+  const ctaMenu = document.querySelector(".service-cta-menu");
+  const ctaTrigger = ctaMenu?.querySelector(".service-cta-trigger");
+  const ctaOptions = ctaMenu?.querySelector(".service-cta-options");
+  const consultingToggle = ctaMenu?.querySelector(
+    ".service-cta-consulting-toggle",
+  );
+  const consultingOptions = ctaMenu?.querySelector(
+    ".service-cta-consulting-options",
+  );
+
+  function setConsultingOptions(open) {
+    consultingToggle?.setAttribute("aria-expanded", String(open));
+    if (consultingOptions) consultingOptions.hidden = !open;
+  }
+
+  function setCtaMenu(open) {
+    ctaTrigger?.setAttribute("aria-expanded", String(open));
+    if (ctaOptions) ctaOptions.hidden = !open;
+    if (!open) setConsultingOptions(false);
+  }
+
+  ctaTrigger?.addEventListener("click", () => {
+    const open = ctaTrigger.getAttribute("aria-expanded") !== "true";
+    setCtaMenu(open);
+    if (open)
+      window.requestAnimationFrame(() =>
+        ctaOptions?.querySelector("button")?.focus(),
+      );
+  });
+
+  consultingToggle?.addEventListener("click", () => {
+    const open = consultingToggle.getAttribute("aria-expanded") !== "true";
+    setConsultingOptions(open);
+    if (open)
+      window.requestAnimationFrame(() =>
+        consultingOptions?.querySelector("button")?.focus(),
+      );
+  });
+
+  ctaMenu?.querySelectorAll("[data-service-choice]").forEach((choice) => {
+    choice.addEventListener("click", () => {
+      if (serviceSelect) serviceSelect.value = choice.dataset.serviceChoice;
+      syncConsultingField();
+      if (consultingSelect && choice.dataset.consultingChoice)
+        consultingSelect.value = choice.dataset.consultingChoice;
+      setCtaMenu(false);
+      contactSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.setTimeout(() => serviceSelect?.focus(), 450);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (ctaMenu && !ctaMenu.contains(event.target)) setCtaMenu(false);
+  });
+
+  ctaMenu?.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setCtaMenu(false);
+      ctaTrigger?.focus();
+    }
+  });
+
   const success = form?.querySelector(".form-success");
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
