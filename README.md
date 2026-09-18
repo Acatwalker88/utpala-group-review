@@ -1,27 +1,36 @@
-# Utpala Group Review Website
+# Utpala Group Website
 
-This repository publishes the refined Utpala Group review website for stakeholder feedback.
+This repository publishes the stakeholder-approved revision of the existing Utpala Group website. It preserves the established image-led carousel, navy-and-gold brand system, motion, card composition, and single responsive menu while simplifying the visitor journey.
 
-## Review scope
+## Current structure
 
-- The V2 navigation, centred logo, hero carousel, service-card composition, typography, CTA styling, spacing, overlays, controls, and motion remain locked.
-- Content now follows Deckyi's approved four service lines in order: Finance, Real Estate, Design, and Construction.
-- Utpala Real Estate Consulting appears later under How We Work as Advisory, Strategy, Development, and Project Management.
-- Real Estate Resources includes the OpenStreetMap area explorer, a dated July 2026 TRREB snapshot, and the Ontario/Toronto residential land transfer tax estimator.
-- “Discuss this area” carries the selected community into the consultation form.
-- The “How Can We Help?” CTA opens the six approved enquiry options. Real Estate Consulting reveals Advisory, Strategy, Development, Project Management, and “Not sure yet” only after selection.
-- The contact form uses the same progressive-disclosure pattern and validates in the browser without transmitting information.
-- The five Project Types cards use the supplied architecture assets in order from Utpa_01 through Utpa_05.
-- The website uses the corporate Utpala Group mark with refined navy and gold brand tokens while preserving the V2 white, image-led composition and limited black footer treatment.
+- Home: five labelled hero states—Integrated, Finance, Real Estate, Design, and Construction—followed by the four service pathways and one contact form.
+- Finance: financing strategy, mortgage coordination, preparation, and funding conversations.
+- Real Estate: purchase, sale, investment, property advisory, Real Estate Consulting, and the Niagara/GTA area explorer.
+- Design: architectural, engineering, interior-design, and design-development coordination.
+- Construction: residential, commercial, institutional, renovation/addition pathways, plus the approved builder credentials.
 
-## Updating Real Estate Resources
+## Brand and interface amendments
 
-Update supported areas and tax brackets in `assets/realty-resources.js`. Update the dated market figures in `index.html` only after verifying the newest official TRREB Market Watch release.
+- Uses the officially supplied Utpala mark in the centred header position.
+- Enlarges the logo, Menu label, and Contact Utpala action.
+- Applies a high-contrast dark navy header after scrolling and on all service pages.
+- Uses Montserrat for headings and controls as a geometric web-safe companion to Utpala’s Oddlini logo typography; Oddlini itself is not bundled because a licensed webfont file was not supplied.
+- Keeps “How can we help you?” as a small kicker and makes “Contact Utpala” the dominant contact heading.
+- Uses the same navigation and footer structure across all five pages.
+
+## Contact form
+
+The homepage form posts to `info@utpala.ca` through FormSubmit. The first live submission requires the mailbox owner to approve FormSubmit’s one-time activation email. Until that approval is completed, delivery is not active.
+
+## Content still awaiting official assets
+
+- Replace the project-category illustrations with client-approved portfolio photography and case studies when supplied.
+- Replace the social-channel labels with official profile links when supplied.
+- Reconfirm the HCRA/Tarion display details in the Ontario Builder Directory before moving from the GitHub review URL to the final production domain.
 
 ## Deployment
 
-The GitHub Pages workflow publishes the static website automatically after a push to `main`. The repository owner must select **GitHub Actions** once under **Settings → Pages → Build and deployment → Source**.
+GitHub Pages publishes the static site from the repository’s configured Pages source. The current review URL is:
 
-## Important
-
-This is a review version. Replace illustrative images and review copy only after Utpala approves the corresponding production content.
+`https://acatwalker88.github.io/utpala-group-review/`

@@ -130,7 +130,7 @@
   const mapFrame = document.querySelector("#area-map-frame");
   const mapLink = document.querySelector("#map-external-link");
   const discussArea = document.querySelector("#discuss-area");
-  let selectedArea = areas["downtown toronto"];
+  let selectedArea = areas["niagara falls"];
 
   function findArea(query) {
     const normalized = query.trim().toLowerCase().replace(/\s+/g, " ");
@@ -182,6 +182,10 @@
       if (area) showArea(area);
     });
   });
+
+  if (mapFrame || searchInput || searchStatus || discussArea) {
+    showArea(selectedArea);
+  }
 
   discussArea?.addEventListener("click", () => {
     const location = document.querySelector("#location");

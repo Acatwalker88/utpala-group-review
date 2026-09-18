@@ -84,24 +84,29 @@
   const newsLink = document.querySelector(".hero-news-strip a");
   const news = [
     [
+      "One trusted group",
+      "Finance, Real Estate, Design, and Construction connected around your goals.",
+      "#services",
+    ],
+    [
       "Finance",
       "Financing strategy and mortgage coordination aligned with your objectives.",
-      "#finance",
+      "finance/",
     ],
     [
       "Real Estate",
       "Purchase, sale, investment, and property advisory across Niagara and the GTA.",
-      "#real-estate",
+      "real-estate/",
     ],
     [
       "Design",
       "Architectural, engineering, and interior-design coordination for practical project delivery.",
-      "#design",
+      "design/",
     ],
     [
       "Construction",
       "Residential, commercial, and institutional construction by a licensed and registered builder.",
-      "#construction",
+      "construction/",
     ],
   ];
   let activeSlide = 0;
@@ -326,10 +331,9 @@
   });
 
   const success = form?.querySelector(".form-success");
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
+  const sent = new URLSearchParams(window.location.search).get("sent");
+  if (sent === "1") {
     success?.classList.add("is-visible");
-    success?.focus();
-  });
+    window.requestAnimationFrame(() => success?.focus());
+  }
 })();
