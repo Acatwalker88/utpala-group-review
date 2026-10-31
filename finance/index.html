@@ -18,8 +18,8 @@
     <header class="site-header is-scrolled" data-header="true">
       <div class="header-bar">
         <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="compact-menu" aria-expanded="false"><span class="menu-toggle__mark" aria-hidden="true"></span><span>Menu</span></button>
-        <a class="logo-link" href="../" aria-label="Utpala Group home"><img src="../assets/images/utpala-logo-official.png" alt="Utpala Group official logo" width="82" height="82" /></a>
-        <div class="header-actions"><a class="header-actions__link" href="../#consultation">Contact Utpala</a></div>
+        <a class="logo-link brand-lockup" href="../" aria-label="Utpala Construction home"><span class="brand-lockup__word">Utpala</span><img src="../assets/images/utpala-logo-official.png" alt="" width="82" height="82" /><span class="brand-lockup__word">Construction</span></a>
+        <div class="header-actions"><a class="header-actions__link" href="../#consultation">Contact Us</a></div>
       </div>
       <div class="compact-menu" id="compact-menu" aria-hidden="true" inert>
         <div class="compact-menu__inner">
@@ -31,6 +31,7 @@
         </div>
       </div>
     </header>
+    <nav class="service-switcher" aria-label="Explore Utpala services"><div class="service-switcher__inner"><a href="../">All services</a><a class="is-active" href="./" aria-current="page">Finance</a><a href="../real-estate/">Real Estate</a><a href="../design/">Design</a><a href="../construction/">Construction</a></div></nav>
     <main id="main-content">
       <section class="service-page-hero" style="background-image:url('../assets/images/hero-mortgages.jpg')">
         <div class="container">
@@ -55,12 +56,103 @@
           </div>
         </div>
       </section>
+      <section class="finance-tools service-page-section service-page-section--soft" id="calculators" aria-labelledby="calculators-title">
+        <div class="container">
+          <div class="resource-heading finance-tools__heading">
+            <div>
+              <p class="section-kicker">Rates &amp; calculators</p>
+              <h2 class="section-title" id="calculators-title">Plan the numbers before the conversation.</h2>
+            </div>
+            <p class="section-copy">Estimate mortgage payments and Ontario land transfer tax, then compare the result with the current rate context.</p>
+          </div>
+          <div class="calculator-grid">
+            <article class="calculator-card" aria-labelledby="mortgage-calculator-title">
+              <div class="calculator-card__header">
+                <span class="calculator-card__number">01</span>
+                <div><p class="section-kicker">Mortgage calculator</p><h3 id="mortgage-calculator-title">Estimate your payment</h3></div>
+              </div>
+              <form class="calculator-form" id="mortgage-calculator">
+                <div class="calculator-form__grid">
+                  <label>Purchase price<span class="input-prefix"><span>$</span><input id="mortgage-price" type="number" min="0" step="1000" value="700000" inputmode="decimal" /></span></label>
+                  <label>Down payment<span class="input-prefix"><span>$</span><input id="mortgage-down-payment" type="number" min="0" step="1000" value="140000" inputmode="decimal" /></span></label>
+                  <label>Interest rate<span class="input-suffix"><input id="mortgage-rate" type="number" min="0" max="30" step="0.01" value="4.84" inputmode="decimal" /><span>%</span></span></label>
+                  <label>Amortization<select id="mortgage-amortization"><option value="15">15 years</option><option value="20">20 years</option><option value="25" selected>25 years</option><option value="30">30 years</option></select></label>
+                  <label>Payment frequency<select id="mortgage-frequency"><option value="12">Monthly</option><option value="26">Biweekly</option><option value="52">Weekly</option></select></label>
+                </div>
+              </form>
+              <div class="calculator-results" aria-live="polite">
+                <div><span>Estimated mortgage</span><strong id="mortgage-principal">$560,000</strong></div>
+                <div class="calculator-results__primary"><span>Estimated payment</span><strong id="mortgage-payment">$0</strong><small id="mortgage-payment-label">per month</small></div>
+                <div><span>Estimated interest over amortization</span><strong id="mortgage-interest">$0</strong></div>
+              </div>
+              <p class="calculator-note" id="mortgage-insurance-note">Calculation uses Canadian semi-annual compounding. Mortgage default insurance, property tax, fees, and qualification rules are not included.</p>
+            </article>
+
+            <article class="calculator-card" aria-labelledby="tax-calculator-title">
+              <div class="calculator-card__header">
+                <span class="calculator-card__number">02</span>
+                <div><p class="section-kicker">Land transfer tax</p><h3 id="tax-calculator-title">Estimate Ontario closing tax</h3></div>
+              </div>
+              <form class="calculator-form" id="land-tax-calculator">
+                <div class="calculator-form__grid calculator-form__grid--tax">
+                  <label>Purchase price<span class="input-prefix"><span>$</span><input id="tax-purchase-price" type="number" min="0" step="1000" value="700000" inputmode="decimal" /></span></label>
+                  <label>Property location<select id="tax-property-location"><option value="ontario">Ontario, outside Toronto</option><option value="toronto">City of Toronto</option></select></label>
+                </div>
+                <label class="calculator-check"><input id="tax-first-time" type="checkbox" /><span>Apply estimated first-time homebuyer rebates</span></label>
+              </form>
+              <div class="calculator-results" aria-live="polite">
+                <div><span>Ontario tax</span><strong id="tax-ontario">$0</strong></div>
+                <div><span>Toronto municipal tax</span><strong id="tax-toronto">$0</strong></div>
+                <div><span>Estimated rebates</span><strong id="tax-rebate">−$0</strong></div>
+                <div class="calculator-results__primary"><span>Estimated total</span><strong id="tax-total">$0</strong></div>
+              </div>
+              <p class="calculator-note">Estimate uses current Ontario brackets and Toronto residential brackets effective April 1, 2026. Eligibility and transaction-specific charges require professional confirmation.</p>
+              <div class="calculator-sources"><a href="https://www.ontario.ca/document/land-transfer-tax/calculating-land-transfer-tax" target="_blank" rel="noreferrer">Ontario tax source ↗</a><a href="https://www.toronto.ca/services-payments/property-taxes-utilities/municipal-land-transfer-tax-mltt/municipal-land-transfer-tax-mltt-rates-and-fees/" target="_blank" rel="noreferrer">Toronto tax source ↗</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rate-centre service-page-section" id="rates" aria-labelledby="rates-title">
+        <div class="container">
+          <div class="resource-heading finance-tools__heading">
+            <div><p class="section-kicker">Canadian rate context</p><h2 class="section-title" id="rates-title">See the policy rate and a lender snapshot.</h2></div>
+            <p class="section-copy">The Bank of Canada policy rate provides market context. Each lender sets its own prime rate, fixed-rate products, discounts, and borrower conditions.</p>
+          </div>
+          <div class="policy-rate-card">
+            <div><p class="section-kicker">Bank of Canada</p><h3>Target for the overnight rate</h3><p id="policy-rate-status" role="status">Checking the latest official observation…</p></div>
+            <div class="policy-rate-card__value"><strong id="policy-rate-value">2.50%</strong><span id="policy-rate-date">Fallback: October 29, 2026</span></div>
+            <a href="https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/" target="_blank" rel="noreferrer">Open official rate history ↗</a>
+          </div>
+          <div class="rate-news-card">
+            <span>Latest decision</span><p>On October 28, 2026, the Bank of Canada increased its policy rate by 0.25 percentage points to 2.50%.</p><a href="https://www.bankofcanada.ca/2026/10/fad-press-release-2026-10-28/" target="_blank" rel="noreferrer">Read the official announcement ↗</a>
+          </div>
+          <div class="rate-table-wrap">
+            <div class="rate-table-heading"><div><p class="section-kicker">Five major lenders</p><h3>Featured 5-year mortgage rate snapshot</h3></div><p>Verified October 30, 2026</p></div>
+            <table class="rate-table">
+              <thead><tr><th scope="col">Lender</th><th scope="col">5-year fixed</th><th scope="col">5-year variable</th><th scope="col">Official rates</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">TD</th><td>5.04%</td><td>4.19%</td><td><a href="https://www.td.com/ca/en/personal-banking/products/mortgages/mortgage-rates" target="_blank" rel="noreferrer">View TD ↗</a></td></tr>
+                <tr><th scope="row">RBC</th><td>4.84%</td><td>4.10%</td><td><a href="https://www.rbcroyalbank.com/mortgages/mortgage-rates.html" target="_blank" rel="noreferrer">View RBC ↗</a></td></tr>
+                <tr><th scope="row">CIBC</th><td>4.99%</td><td>4.30%</td><td><a href="https://www.cibc.com/en/interest-rates/mortgage-rates.html" target="_blank" rel="noreferrer">View CIBC ↗</a></td></tr>
+                <tr><th scope="row">Scotiabank</th><td>4.99%</td><td>3.95%</td><td><a href="https://www.scotiabank.com/ca/en/personal/rates-prices/mortgages-rates.html" target="_blank" rel="noreferrer">View Scotia ↗</a></td></tr>
+                <tr><th scope="row">BMO</th><td>5.19%</td><td>4.37%</td><td><a href="https://www.bmo.com/en-ca/main/personal/mortgages/mortgage-rates/" target="_blank" rel="noreferrer">View BMO ↗</a></td></tr>
+              </tbody>
+            </table>
+            <p class="rate-table-note">This comparison snapshot uses publicly displayed rate information for comparable 5-year products. Rates and eligibility can change without notice. Confirm the product, APR, amortization, insurance status, and conditions directly with the lender. <a href="https://www.ratehub.ca/banks/bank-mortgage-rates" target="_blank" rel="noreferrer">Snapshot reference ↗</a></p>
+          </div>
+          <div class="rate-explainer-grid">
+            <article><span>Fixed rate</span><h3>Predictable for the selected term</h3><p>Your mortgage rate and scheduled payment remain stable during the term, subject to the mortgage agreement.</p></article>
+            <article><span>Variable rate</span><h3>Moves with lender prime</h3><p>The rate changes when the lender changes its prime rate. The effect on payments depends on the mortgage product.</p></article>
+          </div>
+        </div>
+      </section>
       <section class="service-page-section service-page-section--navy">
         <div class="container service-intro-grid">
           <div><p class="section-kicker">Connected decisions</p><h2 class="section-title">Finance supports every next step.</h2></div>
           <div>
             <p class="section-copy" style="color:rgba(255,255,255,.72)">When the goal also involves a property search, design work, or construction, Utpala can coordinate the conversation across the appropriate departments.</p>
-            <div class="service-pathway"><a href="../real-estate/">Real Estate</a><a href="../design/">Design</a><a href="../construction/">Construction</a></div>
+            <div class="service-pathway" aria-label="Continue exploring Utpala"><a href="../">All services</a><a href="../real-estate/">Next: Real Estate →</a><a href="../design/">Design</a><a href="../construction/">Construction</a></div>
           </div>
         </div>
       </section>
@@ -70,5 +162,6 @@
     </main>
     <footer class="site-footer"><div class="container"><nav class="footer-links" aria-label="Footer links"><a href="../">Home</a><a href="./">Finance</a><a href="../real-estate/">Real Estate</a><a href="../design/">Design</a><a href="../construction/">Construction</a><a href="../#consultation">Contact</a></nav><p class="footer-contact">Integrated Real Estate Services · 4551 Zimmerman Ave, Niagara Falls, ON L2E 3M5 · <a href="mailto:info@utpala.ca">info@utpala.ca</a> · <a href="https://www.utpala.ca">www.utpala.ca</a></p><div class="footer-social-links" aria-label="Utpala social channels"><span>Instagram</span><span>Facebook</span><span>LinkedIn</span><span>WhatsApp</span></div><div class="footer-bottom"><span>© 2026 Utpala Group. All rights reserved.</span><a class="footer-top-link" href="#main-content">Top of page ↑</a></div></div></footer>
     <script src="../assets/static-interactions.js"></script>
+    <script type="module" src="../assets/finance-tools.js"></script>
   </body>
 </html>
