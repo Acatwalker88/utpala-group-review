@@ -86,7 +86,7 @@
   const news = [
     [
       "One trusted group",
-      "Finance, Real Estate, Design, and Construction connected around your goals.",
+      "Finance, Real Estate, Design, and Build connected around your goals.",
       "#services",
     ],
     [
@@ -105,7 +105,7 @@
       "design/",
     ],
     [
-      "Construction",
+      "Build",
       "Residential, commercial, and institutional construction by a licensed and registered builder.",
       "construction/",
     ],
