@@ -4,11 +4,11 @@ This repository publishes the stakeholder-approved revision of the existing Utpa
 
 ## Current structure
 
-- Home: five labelled hero states—Integrated, Finance, Real Estate, Design, and Construction—followed by the four service pathways and one contact form.
+- Home: five labelled hero states—Integrated, Finance, Real Estate, Design, and Build—followed by the four service pathways and one contact form.
 - Finance: financing strategy, mortgage coordination, preparation, funding conversations, mortgage and land-transfer-tax calculators, and a rate centre.
 - Real Estate: purchase, sale, investment, property advisory, Real Estate Consulting, and the Niagara/GTA area explorer.
 - Design: architectural, engineering, interior-design, and design-development coordination.
-- Construction: residential, commercial, institutional, renovation/addition pathways, plus the approved builder credentials.
+- Build: residential, commercial, institutional, renovation/addition pathways, plus the approved builder credentials.
 
 ## Brand and interface amendments
 
@@ -18,7 +18,7 @@ This repository publishes the stakeholder-approved revision of the existing Utpa
 - Applies a high-contrast dark navy header after scrolling and on all service pages.
 - Uses Montserrat for headings and controls as a geometric web-safe companion to Utpala’s Oddlini logo typography; Oddlini itself is not bundled because a licensed webfont file was not supplied.
 - Keeps “How can we help you?” as a small kicker and makes “Contact Utpala” the dominant contact heading.
-- Adds a persistent service switcher to Finance, Real Estate, Design, and Construction so visitors can move between services without returning to the homepage.
+- Adds a persistent service switcher to Finance, Real Estate, Design, and Build so visitors can move between services without returning to the homepage.
 - Adds previous, next, and all-services links near the bottom of every service page.
 - Adds a floating `Scan QR` control on every page. It opens a focused panel containing a high-contrast QR code for the current GitHub Pages review URL.
 
