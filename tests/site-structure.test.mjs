@@ -17,14 +17,35 @@ function page(path) {
   return readFileSync(join(root, path), "utf8");
 }
 
-test("all pages use the approved brand lockup and Contact Us label", () => {
+test("all pages use only the official logo and Contact Us label", () => {
   for (const path of pages) {
     const html = page(path);
-    assert.match(html, /class="logo-link brand-lockup"/, path);
-    assert.match(html, /brand-lockup__word">Utpala</, path);
-    assert.match(html, /brand-lockup__word">Construction</, path);
+    assert.match(html, /class="logo-link"/, path);
+    assert.match(html, /alt="Utpala Group official logo"/, path);
+    assert.doesNotMatch(html, /brand-lockup/, path);
     assert.match(html, /header-actions__link"[^>]*>Contact Us</, path);
   }
+});
+
+test("all five homepage hero banners carry the persistent Utpala Group label", () => {
+  const html = page("index.html");
+  const kickers = [...html.matchAll(/<p class="hero-kicker">([^<]+)<\/p>/g)].map(
+    (match) => match[1],
+  );
+  assert.equal(kickers.length, 5);
+  assert.deepEqual(kickers, Array(5).fill("Utpala Group"));
+});
+
+test("global interactions provide the approved website QR access", () => {
+  const script = readFileSync(join(root, "assets/static-interactions.js"), "utf8");
+  assert.match(
+    script,
+    /https:\/\/acatwalker88\.github\.io\/utpala-group-review\//,
+  );
+  assert.match(script, /utpala-website-qr\.svg/);
+  assert.match(script, /id = "utpala-qr-panel"/);
+  assert.ok(existsSync(join(root, "assets/images/utpala-website-qr.svg")));
+  assert.ok(existsSync(join(root, "assets/images/utpala-website-qr.png")));
 });
 
 test("service pages include persistent cross-service navigation", () => {
