@@ -1,6 +1,7 @@
 (() => {
   "use strict";
 
+  const interactionScript = document.currentScript;
   const header = document.querySelector(".site-header");
   const menuButton = document.querySelector(".menu-toggle");
   const menu = document.querySelector(".compact-menu");
@@ -336,4 +337,97 @@
     success?.classList.add("is-visible");
     window.requestAnimationFrame(() => success?.focus());
   }
+
+  const qrTarget = "https://acatwalker88.github.io/utpala-group-review/";
+  const qrImage = interactionScript?.src
+    ? new URL("images/utpala-website-qr.svg", interactionScript.src).href
+    : "assets/images/utpala-website-qr.svg";
+  let qrReturnFocus = null;
+
+  const qrLauncher = document.createElement("button");
+  qrLauncher.className = "qr-launcher";
+  qrLauncher.type = "button";
+  qrLauncher.setAttribute("aria-controls", "utpala-qr-panel");
+  qrLauncher.setAttribute("aria-expanded", "false");
+  qrLauncher.setAttribute("aria-label", "Show QR code for the Utpala Group website");
+
+  const qrLauncherIcon = document.createElement("span");
+  qrLauncherIcon.className = "qr-launcher__icon";
+  qrLauncherIcon.setAttribute("aria-hidden", "true");
+  qrLauncherIcon.textContent = "▦";
+
+  const qrLauncherLabel = document.createElement("span");
+  qrLauncherLabel.textContent = "Scan QR";
+  qrLauncher.append(qrLauncherIcon, qrLauncherLabel);
+
+  const qrOverlay = document.createElement("div");
+  qrOverlay.className = "qr-overlay";
+  qrOverlay.hidden = true;
+
+  const qrPanel = document.createElement("section");
+  qrPanel.className = "qr-panel";
+  qrPanel.id = "utpala-qr-panel";
+  qrPanel.setAttribute("role", "dialog");
+  qrPanel.setAttribute("aria-modal", "true");
+  qrPanel.setAttribute("aria-labelledby", "utpala-qr-title");
+
+  const qrClose = document.createElement("button");
+  qrClose.className = "qr-panel__close";
+  qrClose.type = "button";
+  qrClose.setAttribute("aria-label", "Close QR code");
+  qrClose.textContent = "×";
+
+  const qrKicker = document.createElement("p");
+  qrKicker.className = "qr-panel__kicker";
+  qrKicker.textContent = "Utpala Group";
+
+  const qrTitle = document.createElement("h2");
+  qrTitle.id = "utpala-qr-title";
+  qrTitle.textContent = "Scan to visit our website";
+
+  const qrCopy = document.createElement("p");
+  qrCopy.className = "qr-panel__copy";
+  qrCopy.textContent =
+    "Point your phone camera at the code for quick access to Utpala Group.";
+
+  const qrGraphic = document.createElement("img");
+  qrGraphic.className = "qr-panel__image";
+  qrGraphic.src = qrImage;
+  qrGraphic.alt = "QR code linking to the Utpala Group website";
+  qrGraphic.width = 294;
+  qrGraphic.height = 294;
+
+  const qrUrl = document.createElement("p");
+  qrUrl.className = "qr-panel__url";
+  const qrLink = document.createElement("a");
+  qrLink.href = qrTarget;
+  qrLink.target = "_blank";
+  qrLink.rel = "noreferrer";
+  qrLink.textContent = "Open the Utpala Group website";
+  qrUrl.append(qrLink);
+
+  qrPanel.append(qrClose, qrKicker, qrTitle, qrCopy, qrGraphic, qrUrl);
+  qrOverlay.append(qrPanel);
+  document.body.append(qrLauncher, qrOverlay);
+
+  function setQrPanel(open) {
+    qrLauncher.setAttribute("aria-expanded", String(open));
+    qrOverlay.hidden = !open;
+    document.body.classList.toggle("qr-open", open);
+    if (open) {
+      qrReturnFocus = document.activeElement;
+      window.requestAnimationFrame(() => qrClose.focus());
+    } else if (qrReturnFocus instanceof HTMLElement) {
+      qrReturnFocus.focus();
+    }
+  }
+
+  qrLauncher.addEventListener("click", () => setQrPanel(true));
+  qrClose.addEventListener("click", () => setQrPanel(false));
+  qrOverlay.addEventListener("click", (event) => {
+    if (event.target === qrOverlay) setQrPanel(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !qrOverlay.hidden) setQrPanel(false);
+  });
 })();
