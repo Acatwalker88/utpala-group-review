@@ -12,13 +12,21 @@ This repository publishes the stakeholder-approved revision of the existing Utpa
 
 ## Brand and interface amendments
 
-- Uses the officially supplied Utpala mark in the centred `UTPALA [mark] CONSTRUCTION` header lockup.
+- Uses only the officially supplied Utpala mark in the centre of the header, as approved in the third review round.
 - Enlarges the logo and Menu label, and changes the header action to `Contact Us`.
+- Keeps `Utpala Group` visible as the label on all five animated homepage banners.
 - Applies a high-contrast dark navy header after scrolling and on all service pages.
 - Uses Montserrat for headings and controls as a geometric web-safe companion to Utpala’s Oddlini logo typography; Oddlini itself is not bundled because a licensed webfont file was not supplied.
 - Keeps “How can we help you?” as a small kicker and makes “Contact Utpala” the dominant contact heading.
 - Adds a persistent service switcher to Finance, Real Estate, Design, and Construction so visitors can move between services without returning to the homepage.
 - Adds previous, next, and all-services links near the bottom of every service page.
+- Adds a floating `Scan QR` control on every page. It opens a focused panel containing a high-contrast QR code for the current GitHub Pages review URL.
+
+## Presentation QR assets
+
+The website package includes the QR code used by the floating panel. Separate high-resolution PNG and scalable SVG files are also supplied for presentation slides and large-screen display. The QR code points to:
+
+`https://acatwalker88.github.io/utpala-group-review/`
 
 ## Finance tools and data
 
