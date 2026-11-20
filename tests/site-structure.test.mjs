@@ -36,6 +36,21 @@ test("all five homepage hero banners carry the persistent Utpala Group label", (
   assert.deepEqual(kickers, Array(5).fill("Utpala Group"));
 });
 
+test("the fourth core service is labelled Build while keeping its stable URL", () => {
+  for (const path of pages) {
+    const html = page(path);
+    assert.doesNotMatch(html, />Construction<\//, path);
+  }
+
+  const home = page("index.html");
+  assert.match(home, /<h1 class="hero-title">Build<\/h1>/);
+  assert.match(home, /href="construction\/">Explore Build<\/a>/);
+
+  const build = page("construction/index.html");
+  assert.match(build, /<title>Build \| Utpala Group<\/title>/);
+  assert.match(build, /<h1>Build<\/h1>/);
+});
+
 test("global interactions provide the approved website QR access", () => {
   const script = readFileSync(join(root, "assets/static-interactions.js"), "utf8");
   assert.match(
